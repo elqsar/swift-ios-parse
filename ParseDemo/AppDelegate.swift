@@ -14,14 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
         
         // init Parse
         Parse.enableLocalDatastore()
         Parse.setApplicationId("gwGayK9hrLKiqU9WcVITypTiJjEtvvbJxbsdfqtz", clientKey: "83iZjuMJSs3VdfJcKIUuLfXighJGgQsaQxYaMTdd")
+        
+        // Customize navigation bar
+        UINavigationBar.appearance().barTintColor = UIColor(red: 223/255, green: 105/255, blue: 23/255, alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)]
         
         return true
     }
