@@ -17,9 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // init Parse
-        Parse.enableLocalDatastore()
-        Parse.setApplicationId("gwGayK9hrLKiqU9WcVITypTiJjEtvvbJxbsdfqtz", clientKey: "83iZjuMJSs3VdfJcKIUuLfXighJGgQsaQxYaMTdd")
+        if let path = NSBundle.mainBundle().pathForResource("AppConfig", ofType: "plist") {
+            if let config = NSDictionary(contentsOfFile: path) as? Dictionary<String, String> {
+                // init Parse
+                Parse.enableLocalDatastore()
+                Parse.setApplicationId(config["application_id"], clientKey: config["client_id"])
+            }
+        }
         
         // Customize navigation bar
         UINavigationBar.appearance().barTintColor = UIColor(red: 223/255, green: 105/255, blue: 23/255, alpha: 1)

@@ -13,6 +13,7 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var content: UITextView!
     @IBOutlet weak var remaining: UILabel!
+    @IBOutlet weak var done: UIBarButtonItem!
     
     @IBAction func createMessage() {
         let message: PFObject = PFObject(className: "Message")
@@ -35,9 +36,7 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
         content.becomeFirstResponder()
         content.delegate = self
         content.contentInset = UIEdgeInsetsMake(-content.bounds.height/2 + 10, 0, 0, 0)
-        
-        remaining.textColor = UIColor(red: 229/255, green: 229/255, blue: 230/255, alpha: 1)
-        self.view.backgroundColor = UIColor(red: 43/255, green: 62/255, blue: 80/255, alpha: 1)
+        done.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +48,7 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
         var remainingCharactres = 140 - newLength
         
         remaining.text = "\(remainingCharactres)"
+        done.enabled = newLength > 0
         
         return (newLength > 140) ? false : true
     }

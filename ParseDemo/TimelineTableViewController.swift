@@ -11,13 +11,14 @@ import Parse
 
 class TimelineTableViewController: UITableViewController {
     
-    var messages: [PFObject] = []
+    var messages: [PFObject] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.separatorColor = UIColor(red: 43/255, green: 62/255, blue: 80/255, alpha: 1)
-        tableView.backgroundColor = UIColor(red: 43/255, green: 62/255, blue: 80/255, alpha: 1)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -137,8 +138,7 @@ class TimelineTableViewController: UITableViewController {
         findAll.findObjectsInBackgroundWithBlock { [unowned self](result: [AnyObject]!, error: NSError!) in
             if error == nil {
                 if let data = result as? [PFObject] {
-                    self.messages = data
-                    self.tableView.reloadData()
+                    self.messages = data.reverse()
                 }
             }
         }

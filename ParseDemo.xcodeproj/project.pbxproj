@@ -27,6 +27,7 @@
 		4608D7A21A754DE30071D831 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4608D7A11A754DE30071D831 /* Bolts.framework */; };
 		4608D7A51A7556FA0071D831 /* TimelineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608D7A41A7556FA0071D831 /* TimelineTableViewController.swift */; };
 		4608D7A91A7557CE0071D831 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */; };
+		463646E91A7FE9B2005C2141 /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 463646E81A7FE9B2005C2141 /* AppConfig.plist */; };
 		46A1C1381A757916008730D1 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1C1371A757916008730D1 /* MessageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		4608D7A11A754DE30071D831 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		4608D7A41A7556FA0071D831 /* TimelineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTableViewController.swift; sourceTree = "<group>"; };
 		4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
+		463646E81A7FE9B2005C2141 /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
 		46A1C1371A757916008730D1 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,12 +125,8 @@
 			children = (
 				4608D7691A754C210071D831 /* AppDelegate.swift */,
 				4608D76D1A754C210071D831 /* Main.storyboard */,
-				4608D7701A754C210071D831 /* Images.xcassets */,
-				4608D7721A754C210071D831 /* LaunchScreen.xib */,
 				4608D7671A754C210071D831 /* Supporting Files */,
-				4608D7A41A7556FA0071D831 /* TimelineTableViewController.swift */,
-				4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */,
-				46A1C1371A757916008730D1 /* MessageTableViewCell.swift */,
+				463646EA1A7FEC1F005C2141 /* Application */,
 			);
 			path = ParseDemo;
 			sourceTree = "<group>";
@@ -136,7 +134,10 @@
 		4608D7671A754C210071D831 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4608D7701A754C210071D831 /* Images.xcassets */,
+				4608D7721A754C210071D831 /* LaunchScreen.xib */,
 				4608D7681A754C210071D831 /* Info.plist */,
+				463646E81A7FE9B2005C2141 /* AppConfig.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -176,6 +177,16 @@
 				4608D7891A754CAB0071D831 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		463646EA1A7FEC1F005C2141 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4608D7A41A7556FA0071D831 /* TimelineTableViewController.swift */,
+				4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */,
+				46A1C1371A757916008730D1 /* MessageTableViewCell.swift */,
+			);
+			name = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				463646E91A7FE9B2005C2141 /* AppConfig.plist in Resources */,
 				4608D76F1A754C210071D831 /* Main.storyboard in Resources */,
 				4608D7741A754C210071D831 /* LaunchScreen.xib in Resources */,
 				4608D7711A754C210071D831 /* Images.xcassets in Resources */,
