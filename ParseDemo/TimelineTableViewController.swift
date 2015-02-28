@@ -11,6 +11,8 @@ import Parse
 
 class TimelineTableViewController: UITableViewController {
     
+    var timelineService: TimelineService?
+    
     var messages: [PFObject] = [] {
         didSet {
             self.tableView.reloadData()
@@ -19,6 +21,8 @@ class TimelineTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timelineService = TimelineService()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -35,19 +39,13 @@ class TimelineTableViewController: UITableViewController {
             })
             
             // Login
-            loginAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (action: UIAlertAction!) in
+            loginAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
                 let textFields: [UITextField] = loginAlert.textFields as [UITextField]
                 let usernameTextField: UITextField = textFields[0]
                 let passwordTextField: UITextField = textFields[1]
                 
                 if !usernameTextField.text.isEmpty && !passwordTextField.text.isEmpty {
-                    PFUser.logInWithUsernameInBackground(usernameTextField.text, password: passwordTextField.text, { (user: PFUser!, error: NSError!) in
-                        if error == nil {
-                            println("Login successful")
-                        } else {
-                            println("Login fails")
-                        }
-                    })
+                self.timelineService?.loginUser(usernameTextField.text, passwordTextField.text)
                 }
             }))
             
@@ -57,19 +55,7 @@ class TimelineTableViewController: UITableViewController {
                 let usernameTextField: UITextField = textFields[0]
                 let passwordTextField: UITextField = textFields[1]
                 
-                let user:PFUser = PFUser()
-                user.username = usernameTextField.text
-                user.password = passwordTextField.text
-                
-                user.signUpInBackgroundWithBlock { (success: Bool!, error: NSError!) in
-                    if error == nil {
-                        println("Sign up successfully")
-                    } else {
-                        if let userError: String? = error.userInfo?["error"] as? String {
-                            println(userError)
-                        }
-                    }
-                }
+                self.timelineService?.signupUser(usernameTextField.text, passwordTextField.text)
             }))
             
             self.presentViewController(loginAlert, animated: true, completion: nil)
@@ -103,20 +89,15 @@ class TimelineTableViewController: UITableViewController {
         
         cell.message.text = message.objectForKey("content") as? String
         
-        var findUser: PFQuery = PFUser.query()
-        findUser.whereKey("objectId", equalTo: message.objectForKey("user").objectId)
-        findUser.findObjectsInBackgroundWithBlock { (result: [AnyObject]!, error: NSError!) in
-            if error == nil {
-                let user = (result as [PFUser]).last
-                cell.username.text = user?.username
-                
-                UIView.animateWithDuration(0.5, animations: {
-                    cell.message.alpha = 1
-                    cell.time.alpha = 1
-                    cell.username.alpha = 1
-                })
-            }
-        }
+        self.timelineService?.findUser(message, { user in
+            cell.username.text = user.username
+            
+            UIView.animateWithDuration(0.5, animations: {
+                cell.message.alpha = 1
+                cell.time.alpha = 1
+                cell.username.alpha = 1
+            })
+        })
         
         let timestamp = message.createdAt as NSDate
         let formatter: NSDateFormatter = NSDateFormatter()

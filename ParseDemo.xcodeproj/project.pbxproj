@@ -29,6 +29,8 @@
 		4608D7A91A7557CE0071D831 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */; };
 		463646E91A7FE9B2005C2141 /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 463646E81A7FE9B2005C2141 /* AppConfig.plist */; };
 		46A1C1381A757916008730D1 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1C1371A757916008730D1 /* MessageTableViewCell.swift */; };
+		46A7ECE01AA21F12009A1E98 /* TimelineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7ECDF1AA21F12009A1E98 /* TimelineService.swift */; };
+		46A7ECE21AA226C6009A1E98 /* CreateMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
 		463646E81A7FE9B2005C2141 /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
 		46A1C1371A757916008730D1 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		46A7ECDF1AA21F12009A1E98 /* TimelineService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineService.swift; sourceTree = "<group>"; };
+		46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,9 @@
 		4608D7661A754C210071D831 /* ParseDemo */ = {
 			isa = PBXGroup;
 			children = (
+				46A7ECDE1AA21EE7009A1E98 /* Interactors */,
+				46A7ECDD1AA21EDF009A1E98 /* Presenters */,
+				46A7ECDC1AA21ED1009A1E98 /* Controllers */,
 				4608D7691A754C210071D831 /* AppDelegate.swift */,
 				4608D76D1A754C210071D831 /* Main.storyboard */,
 				4608D7671A754C210071D831 /* Supporting Files */,
@@ -187,6 +194,29 @@
 				46A1C1371A757916008730D1 /* MessageTableViewCell.swift */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		46A7ECDC1AA21ED1009A1E98 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		46A7ECDD1AA21EDF009A1E98 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				46A7ECDF1AA21F12009A1E98 /* TimelineService.swift */,
+				46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */,
+			);
+			name = Presenters;
+			sourceTree = "<group>";
+		};
+		46A7ECDE1AA21EE7009A1E98 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interactors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +322,8 @@
 			files = (
 				4608D7A91A7557CE0071D831 /* CreateMessageViewController.swift in Sources */,
 				46A1C1381A757916008730D1 /* MessageTableViewCell.swift in Sources */,
+				46A7ECE01AA21F12009A1E98 /* TimelineService.swift in Sources */,
+				46A7ECE21AA226C6009A1E98 /* CreateMessageService.swift in Sources */,
 				4608D7A51A7556FA0071D831 /* TimelineTableViewController.swift in Sources */,
 				4608D76A1A754C210071D831 /* AppDelegate.swift in Sources */,
 			);

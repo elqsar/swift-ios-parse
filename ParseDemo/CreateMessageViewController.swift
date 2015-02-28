@@ -15,12 +15,10 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var remaining: UILabel!
     @IBOutlet weak var done: UIBarButtonItem!
     
+    var createMessageService: CreateMessageService?
+    
     @IBAction func createMessage() {
-        let message: PFObject = PFObject(className: "Message")
-        message["content"] = content.text
-        message["user"] = PFUser.currentUser()
-        
-        message.saveInBackgroundWithBlock(nil)
+        createMessageService?.saveMessage(content.text)
         
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
@@ -32,11 +30,12 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        content.layer.cornerRadius = 5
         content.becomeFirstResponder()
         content.delegate = self
         content.contentInset = UIEdgeInsetsMake(-content.bounds.height/2 + 10, 0, 0, 0)
         done.enabled = false
+        
+        createMessageService = CreateMessageService()
     }
 
     override func didReceiveMemoryWarning() {
