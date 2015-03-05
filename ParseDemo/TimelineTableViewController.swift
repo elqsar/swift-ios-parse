@@ -11,7 +11,7 @@ import Parse
 
 class TimelineTableViewController: UITableViewController {
     
-    var timelineService: TimelineService?
+    var timelinePresenter: TimelinePresenter = TimelinePresenter()
     
     var messages: [PFObject] = [] {
         didSet {
@@ -21,43 +21,13 @@ class TimelineTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        timelineService = TimelineService()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         if PFUser.currentUser() == nil {
-            let loginAlert: UIAlertController = UIAlertController(title: "Login / Sign Up", message: "Please sign up or login", preferredStyle: .Alert)
-            loginAlert.addTextFieldWithConfigurationHandler({ (textField: UITextField!) in
-                textField.placeholder = "Your username"
-            })
-            loginAlert.addTextFieldWithConfigurationHandler({ (textField: UITextField!) in
-                textField.placeholder = "Your password"
-                textField.secureTextEntry = true
-            })
-            
-            // Login
-            loginAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
-                let textFields: [UITextField] = loginAlert.textFields as [UITextField]
-                let usernameTextField: UITextField = textFields[0]
-                let passwordTextField: UITextField = textFields[1]
-                
-                if !usernameTextField.text.isEmpty && !passwordTextField.text.isEmpty {
-                self.timelineService?.loginUser(usernameTextField.text, passwordTextField.text)
-                }
-            }))
-            
-            //  Sign Up
-            loginAlert.addAction(UIAlertAction(title: "Sign Up", style: .Default, handler: { (action: UIAlertAction!) in
-                let textFields: [UITextField] = loginAlert.textFields as [UITextField]
-                let usernameTextField: UITextField = textFields[0]
-                let passwordTextField: UITextField = textFields[1]
-                
-                self.timelineService?.signupUser(usernameTextField.text, passwordTextField.text)
-            }))
-            
+            let loginAlert = timelinePresenter.loginDialog()
             self.presentViewController(loginAlert, animated: true, completion: nil)
         }
         
@@ -69,7 +39,6 @@ class TimelineTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -82,28 +51,15 @@ class TimelineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as MessageTableViewCell
         
         let message = messages[indexPath.row]
-        
-        cell.message.alpha = 0
-        cell.time.alpha = 0
-        cell.username.alpha = 0
-        
         cell.message.text = message.objectForKey("content") as? String
         
-        self.timelineService?.findUser(message, { user in
+        timelinePresenter.showUser(message) { user in
             cell.username.text = user.username
-            
-            UIView.animateWithDuration(0.5, animations: {
-                cell.message.alpha = 1
-                cell.time.alpha = 1
-                cell.username.alpha = 1
-            })
-        })
+        }
         
-        let timestamp = message.createdAt as NSDate
-        let formatter: NSDateFormatter = NSDateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm"
-        
-        cell.time.text = formatter.stringFromDate(timestamp)
+        if let timestamp = message.createdAt {
+            cell.time.text = timelinePresenter.formatTimeStamp(timestamp)
+        }
 
         return cell
     }
@@ -115,13 +71,8 @@ class TimelineTableViewController: UITableViewController {
     @IBAction func loadMessages() {
         messages.removeAll(keepCapacity: false)
         
-        var findAll: PFQuery = PFQuery(className: "Message")
-        findAll.findObjectsInBackgroundWithBlock { [unowned self](result: [AnyObject]!, error: NSError!) in
-            if error == nil {
-                if let data = result as? [PFObject] {
-                    self.messages = data.reverse()
-                }
-            }
+        timelinePresenter.showMessages("desc") { [unowned self] messages in
+            self.messages = messages
         }
     }
 }

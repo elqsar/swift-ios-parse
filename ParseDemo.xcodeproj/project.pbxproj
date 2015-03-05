@@ -29,8 +29,9 @@
 		4608D7A91A7557CE0071D831 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */; };
 		463646E91A7FE9B2005C2141 /* AppConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 463646E81A7FE9B2005C2141 /* AppConfig.plist */; };
 		46A1C1381A757916008730D1 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A1C1371A757916008730D1 /* MessageTableViewCell.swift */; };
-		46A7ECE01AA21F12009A1E98 /* TimelineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7ECDF1AA21F12009A1E98 /* TimelineService.swift */; };
+		46A7ECE01AA21F12009A1E98 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7ECDF1AA21F12009A1E98 /* UserService.swift */; };
 		46A7ECE21AA226C6009A1E98 /* CreateMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */; };
+		46B54EAD1AA870640062500F /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B54EAC1AA870640062500F /* TimelinePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +71,9 @@
 		4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
 		463646E81A7FE9B2005C2141 /* AppConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppConfig.plist; sourceTree = "<group>"; };
 		46A1C1371A757916008730D1 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		46A7ECDF1AA21F12009A1E98 /* TimelineService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineService.swift; sourceTree = "<group>"; };
+		46A7ECDF1AA21F12009A1E98 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageService.swift; sourceTree = "<group>"; };
+		46B54EAC1AA870640062500F /* TimelinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,10 +129,10 @@
 		4608D7661A754C210071D831 /* ParseDemo */ = {
 			isa = PBXGroup;
 			children = (
-				46A7ECDE1AA21EE7009A1E98 /* Interactors */,
-				46A7ECDD1AA21EDF009A1E98 /* Presenters */,
+				46B54EAE1AA880180062500F /* Views */,
+				46B54EAB1AA8704A0062500F /* Presenters */,
+				46A7ECDD1AA21EDF009A1E98 /* Services */,
 				46A7ECDC1AA21ED1009A1E98 /* Controllers */,
-				4608D7691A754C210071D831 /* AppDelegate.swift */,
 				4608D76D1A754C210071D831 /* Main.storyboard */,
 				4608D7671A754C210071D831 /* Supporting Files */,
 				463646EA1A7FEC1F005C2141 /* Application */,
@@ -189,9 +191,7 @@
 		463646EA1A7FEC1F005C2141 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				4608D7A41A7556FA0071D831 /* TimelineTableViewController.swift */,
-				4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */,
-				46A1C1371A757916008730D1 /* MessageTableViewCell.swift */,
+				4608D7691A754C210071D831 /* AppDelegate.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -199,24 +199,35 @@
 		46A7ECDC1AA21ED1009A1E98 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4608D7A41A7556FA0071D831 /* TimelineTableViewController.swift */,
+				4608D7A81A7557CE0071D831 /* CreateMessageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		46A7ECDD1AA21EDF009A1E98 /* Presenters */ = {
+		46A7ECDD1AA21EDF009A1E98 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				46A7ECDF1AA21F12009A1E98 /* TimelineService.swift */,
+				46A7ECDF1AA21F12009A1E98 /* UserService.swift */,
 				46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		46B54EAB1AA8704A0062500F /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				46B54EAC1AA870640062500F /* TimelinePresenter.swift */,
 			);
 			name = Presenters;
 			sourceTree = "<group>";
 		};
-		46A7ECDE1AA21EE7009A1E98 /* Interactors */ = {
+		46B54EAE1AA880180062500F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				46A1C1371A757916008730D1 /* MessageTableViewCell.swift */,
 			);
-			name = Interactors;
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,10 +333,11 @@
 			files = (
 				4608D7A91A7557CE0071D831 /* CreateMessageViewController.swift in Sources */,
 				46A1C1381A757916008730D1 /* MessageTableViewCell.swift in Sources */,
-				46A7ECE01AA21F12009A1E98 /* TimelineService.swift in Sources */,
+				46A7ECE01AA21F12009A1E98 /* UserService.swift in Sources */,
 				46A7ECE21AA226C6009A1E98 /* CreateMessageService.swift in Sources */,
 				4608D7A51A7556FA0071D831 /* TimelineTableViewController.swift in Sources */,
 				4608D76A1A754C210071D831 /* AppDelegate.swift in Sources */,
+				46B54EAD1AA870640062500F /* TimelinePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,5 +51,4 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
         
         return (newLength > 140) ? false : true
     }
-
 }

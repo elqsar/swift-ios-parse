@@ -8,7 +8,7 @@
 
 import Parse
 
-class TimelineService {
+class UserService {
     
     func loginUser(username:String, _ password:String) {
         PFUser.logInWithUsernameInBackground(username, password: password, { (user: PFUser!, error: NSError!) in
