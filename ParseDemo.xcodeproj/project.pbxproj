@@ -32,6 +32,8 @@
 		46A7ECE01AA21F12009A1E98 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7ECDF1AA21F12009A1E98 /* UserService.swift */; };
 		46A7ECE21AA226C6009A1E98 /* CreateMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */; };
 		46B54EAD1AA870640062500F /* TimelinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B54EAC1AA870640062500F /* TimelinePresenter.swift */; };
+		46FB31941AAC57B6009E4460 /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FB31931AAC57B6009E4460 /* ThemeFactory.swift */; };
+		46FB31971AAC5919009E4460 /* ParseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FB31961AAC5919009E4460 /* ParseUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		46A7ECDF1AA21F12009A1E98 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		46A7ECE11AA226C6009A1E98 /* CreateMessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageService.swift; sourceTree = "<group>"; };
 		46B54EAC1AA870640062500F /* TimelinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelinePresenter.swift; sourceTree = "<group>"; };
+		46FB31931AAC57B6009E4460 /* ThemeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeFactory.swift; sourceTree = "<group>"; };
+		46FB31961AAC5919009E4460 /* ParseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 		4608D7661A754C210071D831 /* ParseDemo */ = {
 			isa = PBXGroup;
 			children = (
+				46FB31951AAC5903009E4460 /* ParseUtils */,
+				46FB31921AAC57A7009E4460 /* Theme */,
 				46B54EAE1AA880180062500F /* Views */,
 				46B54EAB1AA8704A0062500F /* Presenters */,
 				46A7ECDD1AA21EDF009A1E98 /* Services */,
@@ -228,6 +234,22 @@
 				46A1C1371A757916008730D1 /* MessageTableViewCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		46FB31921AAC57A7009E4460 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				46FB31931AAC57B6009E4460 /* ThemeFactory.swift */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
+		46FB31951AAC5903009E4460 /* ParseUtils */ = {
+			isa = PBXGroup;
+			children = (
+				46FB31961AAC5919009E4460 /* ParseUtils.swift */,
+			);
+			name = ParseUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,7 +353,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46FB31941AAC57B6009E4460 /* ThemeFactory.swift in Sources */,
 				4608D7A91A7557CE0071D831 /* CreateMessageViewController.swift in Sources */,
+				46FB31971AAC5919009E4460 /* ParseUtils.swift in Sources */,
 				46A1C1381A757916008730D1 /* MessageTableViewCell.swift in Sources */,
 				46A7ECE01AA21F12009A1E98 /* UserService.swift in Sources */,
 				46A7ECE21AA226C6009A1E98 /* CreateMessageService.swift in Sources */,

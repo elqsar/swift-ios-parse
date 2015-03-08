@@ -7,12 +7,6 @@
 //
 
 import UIKit
-import Parse
-
-struct Config {
-    static let APP_ID = "application_id"
-    static let CLIENT_ID = "client_id"
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,18 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func initParse() {
-        if let path = NSBundle.mainBundle().pathForResource("AppConfig", ofType: "plist") {
-            if let config = NSDictionary(contentsOfFile: path) as? Dictionary<String, String> {
-                Parse.enableLocalDatastore()
-                Parse.setApplicationId(config[Config.APP_ID], clientKey: config[Config.CLIENT_ID])
-            }
-        }
+        ParseUtils.initParse()
     }
     
     private func navigationBarTheme() {
-        UINavigationBar.appearance().barTintColor = UIColor(red: 223/255, green: 105/255, blue: 23/255, alpha: 1)
-        UINavigationBar.appearance().tintColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)]
+        ThemeFactory.navigationBarTheme()
     }
 
 }

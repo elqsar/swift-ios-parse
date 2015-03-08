@@ -32,21 +32,19 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
         
         content.becomeFirstResponder()
         content.delegate = self
-        content.contentInset = UIEdgeInsetsMake(-content.bounds.height/2 + 10, 0, 0, 0)
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+
         done.enabled = false
         
         createMessageService = CreateMessageService()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         var newLength: Int = (textView.text as NSString).length + (text as NSString).length - range.length
         var remainingCharactres = 140 - newLength
         
-        remaining.text = "\(remainingCharactres)"
+        remaining.text = remainingCharactres > 0 ? "\(remainingCharactres)" : "\(0)"
         done.enabled = newLength > 0
         
         return (newLength > 140) ? false : true
