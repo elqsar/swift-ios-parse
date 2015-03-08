@@ -1,5 +1,5 @@
 # swift-ios-parse-demo
-simple demo of parse and ios app integration
+Simple demo of parse and ios app integration
 
 How to:
 
