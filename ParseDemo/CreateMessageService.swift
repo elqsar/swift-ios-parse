@@ -10,6 +10,13 @@ import Parse
 
 class CreateMessageService {
     
+    class var sharedInstance: CreateMessageService {
+        struct Singleton {
+            static let instance = CreateMessageService()
+        }
+        return Singleton.instance
+    }
+    
     func saveMessage(content: String) {
         let message: PFObject = PFObject(className: "Message")
         message["content"] = content
