@@ -37,7 +37,7 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
 
         done.enabled = false
         
-        createMessageService = CreateMessageService.sharedInstance
+        createMessageService = CreateMessageService()
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {

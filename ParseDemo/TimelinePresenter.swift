@@ -14,7 +14,7 @@ class TimelinePresenter {
     var userService: UserService?
     
     init() {
-        userService = UserService.sharedInstance
+        userService = UserService()
     }
     
     func loginDialog() -> UIAlertController {

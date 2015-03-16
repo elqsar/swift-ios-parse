@@ -10,13 +10,6 @@ import Parse
 
 class UserService {
     
-    class var sharedInstance: UserService {
-        struct Singleton {
-            static let instance = UserService()
-        }
-        return Singleton.instance
-    }
-    
     func loginUser(username:String, _ password:String) {
         PFUser.logInWithUsernameInBackground(username, password: password, { (user: PFUser!, error: NSError!) in
             if error == nil {
