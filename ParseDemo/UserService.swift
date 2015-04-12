@@ -11,13 +11,13 @@ import Parse
 class UserService {
     
     func loginUser(username:String, _ password:String) {
-        PFUser.logInWithUsernameInBackground(username, password: password, { (user: PFUser!, error: NSError!) in
+        PFUser.logInWithUsernameInBackground(username, password: password) { user, error in
             if error == nil {
                 println("Login successful")
             } else {
                 println("Login fails")
             }
-        })
+        }
     }
 
     func signupUser(username:String, _ password:String) {
@@ -25,7 +25,7 @@ class UserService {
         user.username = username
         user.password = password
         
-        user.signUpInBackgroundWithBlock { (success: Bool!, error: NSError!) in
+        user.signUpInBackgroundWithBlock { success, error in
             if error == nil {
                 println("Sign up successfully")
             } else {
@@ -39,10 +39,10 @@ class UserService {
     func findUser(message: PFObject, complete:(user: PFUser) -> ()) {
         var findUser: PFQuery = PFUser.query()
         findUser.whereKey("objectId", equalTo: message.objectForKey("user").objectId)
-        findUser.findObjectsInBackgroundWithBlock { (result: [AnyObject]!, error: NSError!) in
+        findUser.findObjectsInBackgroundWithBlock { result, error in
             if error == nil {
                 if result != nil && result.count > 0 {
-                    if let user = (result as [PFUser]).last {
+                    if let user = (result as! [PFUser]).last {
                        complete(user: user)
                     }
                 }

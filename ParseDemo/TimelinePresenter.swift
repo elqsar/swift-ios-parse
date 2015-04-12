@@ -22,9 +22,9 @@ class TimelinePresenter {
     }
     
     func showUser(message: PFObject, complete:(user: PFUser) -> ()) {
-        self.userService?.findUser(message, { user in
+        self.userService?.findUser(message) { user in
             complete(user: user)
-        })
+        }
     }
     
     func showMessages(sortOrder: String, complete:(messages: [PFObject]) -> ()) {
@@ -58,7 +58,7 @@ class TimelinePresenter {
         
         // Login
         loginAlert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { [unowned self] (action: UIAlertAction!) in
-            let textFields: [UITextField] = loginAlert.textFields as [UITextField]
+            let textFields: [UITextField] = loginAlert.textFields as! [UITextField]
             let usernameTextField: UITextField = textFields[0]
             let passwordTextField: UITextField = textFields[1]
             
@@ -69,7 +69,7 @@ class TimelinePresenter {
         
         //  Sign Up
         loginAlert.addAction(UIAlertAction(title: "Sign Up", style: .Default, handler: { (action: UIAlertAction!) in
-            let textFields: [UITextField] = loginAlert.textFields as [UITextField]
+            let textFields: [UITextField] = loginAlert.textFields as! [UITextField]
             let usernameTextField: UITextField = textFields[0]
             let passwordTextField: UITextField = textFields[1]
             
